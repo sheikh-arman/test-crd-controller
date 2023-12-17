@@ -1,0 +1,8 @@
+apiVersion: arman.com/v1alpha1
+kind: Blackman
+metadata:
+  name: arman-test
+spec:
+  name: arman-test-name
+  region: no-region
+  version: updated-version

@@ -7,45 +7,8 @@
     <list default="true" id="87c851a6-4e8b-4f2e-9255-59fbe6ab8f4c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/everything.sh" beforeDir="false" afterPath="$PROJECT_DIR$/everything.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/apis/arman.com/v1alpha1/register.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/apis/arman.com/v1alpha1/register.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/apis/arman.com/v1alpha1/types.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/apis/arman.com/v1alpha1/types.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/apis/arman.com/v1alpha1/zz_generated.deepcopy.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/apis/arman.com/v1alpha1/zz_generated.deepcopy.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/applyconfiguration/arman.com/v1alpha1/armanstatus.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/applyconfiguration/arman.com/v1alpha1/blackman.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/applyconfiguration/arman.com/v1alpha1/blackmanspec.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/applyconfiguration/internal/internal.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/applyconfiguration/utils.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/clientset/versioned/clientset.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/clientset/versioned/fake/clientset_generated.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/clientset/versioned/fake/doc.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/clientset/versioned/fake/register.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/clientset/versioned/scheme/doc.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/clientset/versioned/scheme/register.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/clientset/versioned/typed/arman.com/v1alpha1/arman.com_client.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/clientset/versioned/typed/arman.com/v1alpha1/blackman.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/clientset/versioned/typed/arman.com/v1alpha1/doc.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/clientset/versioned/typed/arman.com/v1alpha1/fake/doc.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/clientset/versioned/typed/arman.com/v1alpha1/fake/fake_arman.com_client.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/clientset/versioned/typed/arman.com/v1alpha1/fake/fake_blackman.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/clientset/versioned/typed/arman.com/v1alpha1/generated_expansion.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/informers/externalversions/arman.com/interface.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/informers/externalversions/arman.com/v1alpha1/blackman.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/informers/externalversions/arman.com/v1alpha1/interface.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/informers/externalversions/factory.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/informers/externalversions/generic.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/informers/externalversions/internalinterfaces/factory_interfaces.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/informers/internalversion/factory.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/informers/internalversion/generic.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/informers/internalversion/internalinterfaces/factory_interfaces.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/informers/internalversion/v1alpha1/interface.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/informers/internalversion/v1alpha1/internalversion/blackman.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/informers/internalversion/v1alpha1/internalversion/interface.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/listers/arman.com/v1alpha1/blackman.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/listers/arman.com/v1alpha1/expansion_generated.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/listers/v1alpha1/internalversion/blackman.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/client/listers/v1alpha1/internalversion/expansion_generated.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manifests/arman.com_blackmanlists.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/manifests/arman.com_blackmanlists.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manifests/arman.com_blackmen.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/manifests/arman.com_blackmen.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
