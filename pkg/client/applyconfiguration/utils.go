@@ -29,12 +29,10 @@ import (
 func ForKind(kind schema.GroupVersionKind) interface{} {
 	switch kind {
 	// Group=arman.com, Version=v1alpha1
-	case v1alpha1.SchemeGroupVersion.WithKind("ArmanStatus"):
-		return &armancomv1alpha1.ArmanStatusApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("BlackMan"):
-		return &armancomv1alpha1.BlackManApplyConfiguration{}
-	case v1alpha1.SchemeGroupVersion.WithKind("BlackManSpec"):
-		return &armancomv1alpha1.BlackManSpecApplyConfiguration{}
+	case v1alpha1.SchemeGroupVersion.WithKind("Blackman"):
+		return &armancomv1alpha1.BlackmanApplyConfiguration{}
+	case v1alpha1.SchemeGroupVersion.WithKind("BlackmanSpec"):
+		return &armancomv1alpha1.BlackmanSpecApplyConfiguration{}
 
 	}
 	return nil

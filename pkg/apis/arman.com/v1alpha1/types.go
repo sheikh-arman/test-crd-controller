@@ -6,27 +6,21 @@ import (
 
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
-type BlackMan struct {
-	metav1.TypeMeta `json:",inline"`
+type Blackman struct {
+	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec BlackManSpec `json:"spec,omitempty"`
-	Status ArmanStatus `json:"status,omitempty"`
+	Spec              BlackmanSpec `json:"spec,omitempty"`
 }
 
-type ArmanStatus struct {
-	AvailableReplicas int32 `json:"availableReplicas"`
+type BlackmanSpec struct {
+	Name    string `json:"name"`
+	Region  string `json:"region"`
+	Version string `json:"version"`
 }
-
-type BlackManSpec struct {
-	Name     string `json:"name"`
-	Region   string `json:"region"`
-	Version  string `json:"version"`
-}
-
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
-type BlackManList struct {
-	metav1.TypeMeta `json:",inline"`
+type BlackmanList struct {
+	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Items []BlackMan `json:"items,omitempty"`
+	Items             []Blackman `json:"items,omitempty"`
 }

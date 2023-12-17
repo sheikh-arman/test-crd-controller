@@ -18,24 +18,24 @@ limitations under the License.
 
 package v1alpha1
 
-// BlackManSpecApplyConfiguration represents an declarative configuration of the BlackManSpec type for use
+// BlackmanSpecApplyConfiguration represents an declarative configuration of the BlackmanSpec type for use
 // with apply.
-type BlackManSpecApplyConfiguration struct {
+type BlackmanSpecApplyConfiguration struct {
 	Name    *string `json:"name,omitempty"`
 	Region  *string `json:"region,omitempty"`
 	Version *string `json:"version,omitempty"`
 }
 
-// BlackManSpecApplyConfiguration constructs an declarative configuration of the BlackManSpec type for use with
+// BlackmanSpecApplyConfiguration constructs an declarative configuration of the BlackmanSpec type for use with
 // apply.
-func BlackManSpec() *BlackManSpecApplyConfiguration {
-	return &BlackManSpecApplyConfiguration{}
+func BlackmanSpec() *BlackmanSpecApplyConfiguration {
+	return &BlackmanSpecApplyConfiguration{}
 }
 
 // WithName sets the Name field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Name field is set to the value of the last call.
-func (b *BlackManSpecApplyConfiguration) WithName(value string) *BlackManSpecApplyConfiguration {
+func (b *BlackmanSpecApplyConfiguration) WithName(value string) *BlackmanSpecApplyConfiguration {
 	b.Name = &value
 	return b
 }
@@ -43,7 +43,7 @@ func (b *BlackManSpecApplyConfiguration) WithName(value string) *BlackManSpecApp
 // WithRegion sets the Region field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Region field is set to the value of the last call.
-func (b *BlackManSpecApplyConfiguration) WithRegion(value string) *BlackManSpecApplyConfiguration {
+func (b *BlackmanSpecApplyConfiguration) WithRegion(value string) *BlackmanSpecApplyConfiguration {
 	b.Region = &value
 	return b
 }
@@ -51,7 +51,7 @@ func (b *BlackManSpecApplyConfiguration) WithRegion(value string) *BlackManSpecA
 // WithVersion sets the Version field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Version field is set to the value of the last call.
-func (b *BlackManSpecApplyConfiguration) WithVersion(value string) *BlackManSpecApplyConfiguration {
+func (b *BlackmanSpecApplyConfiguration) WithVersion(value string) *BlackmanSpecApplyConfiguration {
 	b.Version = &value
 	return b
 }

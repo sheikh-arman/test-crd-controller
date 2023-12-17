@@ -33,45 +33,43 @@ import (
 	rest "k8s.io/client-go/rest"
 )
 
-// BlackMansGetter has a method to return a BlackManInterface.
+// BlackmansGetter has a method to return a BlackmanInterface.
 // A group's client should implement this interface.
-type BlackMansGetter interface {
-	BlackMans(namespace string) BlackManInterface
+type BlackmansGetter interface {
+	Blackmans(namespace string) BlackmanInterface
 }
 
-// BlackManInterface has methods to work with BlackMan resources.
-type BlackManInterface interface {
-	Create(ctx context.Context, blackMan *v1alpha1.BlackMan, opts v1.CreateOptions) (*v1alpha1.BlackMan, error)
-	Update(ctx context.Context, blackMan *v1alpha1.BlackMan, opts v1.UpdateOptions) (*v1alpha1.BlackMan, error)
-	UpdateStatus(ctx context.Context, blackMan *v1alpha1.BlackMan, opts v1.UpdateOptions) (*v1alpha1.BlackMan, error)
+// BlackmanInterface has methods to work with Blackman resources.
+type BlackmanInterface interface {
+	Create(ctx context.Context, blackman *v1alpha1.Blackman, opts v1.CreateOptions) (*v1alpha1.Blackman, error)
+	Update(ctx context.Context, blackman *v1alpha1.Blackman, opts v1.UpdateOptions) (*v1alpha1.Blackman, error)
 	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
 	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
-	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.BlackMan, error)
-	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.BlackManList, error)
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.Blackman, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.BlackmanList, error)
 	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
-	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BlackMan, err error)
-	Apply(ctx context.Context, blackMan *armancomv1alpha1.BlackManApplyConfiguration, opts v1.ApplyOptions) (result *v1alpha1.BlackMan, err error)
-	ApplyStatus(ctx context.Context, blackMan *armancomv1alpha1.BlackManApplyConfiguration, opts v1.ApplyOptions) (result *v1alpha1.BlackMan, err error)
-	BlackManExpansion
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Blackman, err error)
+	Apply(ctx context.Context, blackman *armancomv1alpha1.BlackmanApplyConfiguration, opts v1.ApplyOptions) (result *v1alpha1.Blackman, err error)
+	BlackmanExpansion
 }
 
-// blackMans implements BlackManInterface
-type blackMans struct {
+// blackmans implements BlackmanInterface
+type blackmans struct {
 	client rest.Interface
 	ns     string
 }
 
-// newBlackMans returns a BlackMans
-func newBlackMans(c *ArmanV1alpha1Client, namespace string) *blackMans {
-	return &blackMans{
+// newBlackmans returns a Blackmans
+func newBlackmans(c *ArmanV1alpha1Client, namespace string) *blackmans {
+	return &blackmans{
 		client: c.RESTClient(),
 		ns:     namespace,
 	}
 }
 
-// Get takes name of the blackMan, and returns the corresponding blackMan object, and an error if there is any.
-func (c *blackMans) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BlackMan, err error) {
-	result = &v1alpha1.BlackMan{}
+// Get takes name of the blackman, and returns the corresponding blackman object, and an error if there is any.
+func (c *blackmans) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Blackman, err error) {
+	result = &v1alpha1.Blackman{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("blackmans").
@@ -82,13 +80,13 @@ func (c *blackMans) Get(ctx context.Context, name string, options v1.GetOptions)
 	return
 }
 
-// List takes label and field selectors, and returns the list of BlackMans that match those selectors.
-func (c *blackMans) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BlackManList, err error) {
+// List takes label and field selectors, and returns the list of Blackmans that match those selectors.
+func (c *blackmans) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BlackmanList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
 	}
-	result = &v1alpha1.BlackManList{}
+	result = &v1alpha1.BlackmanList{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("blackmans").
@@ -99,8 +97,8 @@ func (c *blackMans) List(ctx context.Context, opts v1.ListOptions) (result *v1al
 	return
 }
 
-// Watch returns a watch.Interface that watches the requested blackMans.
-func (c *blackMans) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
+// Watch returns a watch.Interface that watches the requested blackmans.
+func (c *blackmans) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -114,51 +112,35 @@ func (c *blackMans) Watch(ctx context.Context, opts v1.ListOptions) (watch.Inter
 		Watch(ctx)
 }
 
-// Create takes the representation of a blackMan and creates it.  Returns the server's representation of the blackMan, and an error, if there is any.
-func (c *blackMans) Create(ctx context.Context, blackMan *v1alpha1.BlackMan, opts v1.CreateOptions) (result *v1alpha1.BlackMan, err error) {
-	result = &v1alpha1.BlackMan{}
+// Create takes the representation of a blackman and creates it.  Returns the server's representation of the blackman, and an error, if there is any.
+func (c *blackmans) Create(ctx context.Context, blackman *v1alpha1.Blackman, opts v1.CreateOptions) (result *v1alpha1.Blackman, err error) {
+	result = &v1alpha1.Blackman{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("blackmans").
 		VersionedParams(&opts, scheme.ParameterCodec).
-		Body(blackMan).
+		Body(blackman).
 		Do(ctx).
 		Into(result)
 	return
 }
 
-// Update takes the representation of a blackMan and updates it. Returns the server's representation of the blackMan, and an error, if there is any.
-func (c *blackMans) Update(ctx context.Context, blackMan *v1alpha1.BlackMan, opts v1.UpdateOptions) (result *v1alpha1.BlackMan, err error) {
-	result = &v1alpha1.BlackMan{}
+// Update takes the representation of a blackman and updates it. Returns the server's representation of the blackman, and an error, if there is any.
+func (c *blackmans) Update(ctx context.Context, blackman *v1alpha1.Blackman, opts v1.UpdateOptions) (result *v1alpha1.Blackman, err error) {
+	result = &v1alpha1.Blackman{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("blackmans").
-		Name(blackMan.Name).
+		Name(blackman.Name).
 		VersionedParams(&opts, scheme.ParameterCodec).
-		Body(blackMan).
+		Body(blackman).
 		Do(ctx).
 		Into(result)
 	return
 }
 
-// UpdateStatus was generated because the type contains a Status member.
-// Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *blackMans) UpdateStatus(ctx context.Context, blackMan *v1alpha1.BlackMan, opts v1.UpdateOptions) (result *v1alpha1.BlackMan, err error) {
-	result = &v1alpha1.BlackMan{}
-	err = c.client.Put().
-		Namespace(c.ns).
-		Resource("blackmans").
-		Name(blackMan.Name).
-		SubResource("status").
-		VersionedParams(&opts, scheme.ParameterCodec).
-		Body(blackMan).
-		Do(ctx).
-		Into(result)
-	return
-}
-
-// Delete takes name of the blackMan and deletes it. Returns an error if one occurs.
-func (c *blackMans) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
+// Delete takes name of the blackman and deletes it. Returns an error if one occurs.
+func (c *blackmans) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("blackmans").
@@ -169,7 +151,7 @@ func (c *blackMans) Delete(ctx context.Context, name string, opts v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *blackMans) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+func (c *blackmans) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
 	if listOpts.TimeoutSeconds != nil {
 		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
@@ -184,9 +166,9 @@ func (c *blackMans) DeleteCollection(ctx context.Context, opts v1.DeleteOptions,
 		Error()
 }
 
-// Patch applies the patch and returns the patched blackMan.
-func (c *blackMans) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BlackMan, err error) {
-	result = &v1alpha1.BlackMan{}
+// Patch applies the patch and returns the patched blackman.
+func (c *blackmans) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Blackman, err error) {
+	result = &v1alpha1.Blackman{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("blackmans").
@@ -199,55 +181,25 @@ func (c *blackMans) Patch(ctx context.Context, name string, pt types.PatchType, 
 	return
 }
 
-// Apply takes the given apply declarative configuration, applies it and returns the applied blackMan.
-func (c *blackMans) Apply(ctx context.Context, blackMan *armancomv1alpha1.BlackManApplyConfiguration, opts v1.ApplyOptions) (result *v1alpha1.BlackMan, err error) {
-	if blackMan == nil {
-		return nil, fmt.Errorf("blackMan provided to Apply must not be nil")
+// Apply takes the given apply declarative configuration, applies it and returns the applied blackman.
+func (c *blackmans) Apply(ctx context.Context, blackman *armancomv1alpha1.BlackmanApplyConfiguration, opts v1.ApplyOptions) (result *v1alpha1.Blackman, err error) {
+	if blackman == nil {
+		return nil, fmt.Errorf("blackman provided to Apply must not be nil")
 	}
 	patchOpts := opts.ToPatchOptions()
-	data, err := json.Marshal(blackMan)
+	data, err := json.Marshal(blackman)
 	if err != nil {
 		return nil, err
 	}
-	name := blackMan.Name
+	name := blackman.Name
 	if name == nil {
-		return nil, fmt.Errorf("blackMan.Name must be provided to Apply")
+		return nil, fmt.Errorf("blackman.Name must be provided to Apply")
 	}
-	result = &v1alpha1.BlackMan{}
+	result = &v1alpha1.Blackman{}
 	err = c.client.Patch(types.ApplyPatchType).
 		Namespace(c.ns).
 		Resource("blackmans").
 		Name(*name).
-		VersionedParams(&patchOpts, scheme.ParameterCodec).
-		Body(data).
-		Do(ctx).
-		Into(result)
-	return
-}
-
-// ApplyStatus was generated because the type contains a Status member.
-// Add a +genclient:noStatus comment above the type to avoid generating ApplyStatus().
-func (c *blackMans) ApplyStatus(ctx context.Context, blackMan *armancomv1alpha1.BlackManApplyConfiguration, opts v1.ApplyOptions) (result *v1alpha1.BlackMan, err error) {
-	if blackMan == nil {
-		return nil, fmt.Errorf("blackMan provided to Apply must not be nil")
-	}
-	patchOpts := opts.ToPatchOptions()
-	data, err := json.Marshal(blackMan)
-	if err != nil {
-		return nil, err
-	}
-
-	name := blackMan.Name
-	if name == nil {
-		return nil, fmt.Errorf("blackMan.Name must be provided to Apply")
-	}
-
-	result = &v1alpha1.BlackMan{}
-	err = c.client.Patch(types.ApplyPatchType).
-		Namespace(c.ns).
-		Resource("blackmans").
-		Name(*name).
-		SubResource("status").
 		VersionedParams(&patchOpts, scheme.ParameterCodec).
 		Body(data).
 		Do(ctx).

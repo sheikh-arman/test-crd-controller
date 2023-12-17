@@ -28,8 +28,8 @@ type FakeArmanV1alpha1 struct {
 	*testing.Fake
 }
 
-func (c *FakeArmanV1alpha1) BlackMans(namespace string) v1alpha1.BlackManInterface {
-	return &FakeBlackMans{c, namespace}
+func (c *FakeArmanV1alpha1) Blackmans(namespace string) v1alpha1.BlackmanInterface {
+	return &FakeBlackmans{c, namespace}
 }
 
 // RESTClient returns a RESTClient that is used to communicate

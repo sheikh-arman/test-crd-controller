@@ -24,8 +24,8 @@ import (
 
 // Interface provides access to all the informers in this group version.
 type Interface interface {
-	// BlackMans returns a BlackManInformer.
-	BlackMans() BlackManInformer
+	// Blackmans returns a BlackmanInformer.
+	Blackmans() BlackmanInformer
 }
 
 type version struct {
@@ -39,7 +39,7 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 	return &version{factory: f, namespace: namespace, tweakListOptions: tweakListOptions}
 }
 
-// BlackMans returns a BlackManInformer.
-func (v *version) BlackMans() BlackManInformer {
-	return &blackManInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+// Blackmans returns a BlackmanInformer.
+func (v *version) Blackmans() BlackmanInformer {
+	return &blackmanInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

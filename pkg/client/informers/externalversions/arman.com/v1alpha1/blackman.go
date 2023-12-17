@@ -32,59 +32,59 @@ import (
 	cache "k8s.io/client-go/tools/cache"
 )
 
-// BlackManInformer provides access to a shared informer and lister for
-// BlackMans.
-type BlackManInformer interface {
+// BlackmanInformer provides access to a shared informer and lister for
+// Blackmans.
+type BlackmanInformer interface {
 	Informer() cache.SharedIndexInformer
-	Lister() v1alpha1.BlackManLister
+	Lister() v1alpha1.BlackmanLister
 }
 
-type blackManInformer struct {
+type blackmanInformer struct {
 	factory          internalinterfaces.SharedInformerFactory
 	tweakListOptions internalinterfaces.TweakListOptionsFunc
 	namespace        string
 }
 
-// NewBlackManInformer constructs a new informer for BlackMan type.
+// NewBlackmanInformer constructs a new informer for Blackman type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewBlackManInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
-	return NewFilteredBlackManInformer(client, namespace, resyncPeriod, indexers, nil)
+func NewBlackmanInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
+	return NewFilteredBlackmanInformer(client, namespace, resyncPeriod, indexers, nil)
 }
 
-// NewFilteredBlackManInformer constructs a new informer for BlackMan type.
+// NewFilteredBlackmanInformer constructs a new informer for Blackman type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewFilteredBlackManInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
+func NewFilteredBlackmanInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
 	return cache.NewSharedIndexInformer(
 		&cache.ListWatch{
 			ListFunc: func(options v1.ListOptions) (runtime.Object, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.ArmanV1alpha1().BlackMans(namespace).List(context.TODO(), options)
+				return client.ArmanV1alpha1().Blackmans(namespace).List(context.TODO(), options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.ArmanV1alpha1().BlackMans(namespace).Watch(context.TODO(), options)
+				return client.ArmanV1alpha1().Blackmans(namespace).Watch(context.TODO(), options)
 			},
 		},
-		&armancomv1alpha1.BlackMan{},
+		&armancomv1alpha1.Blackman{},
 		resyncPeriod,
 		indexers,
 	)
 }
 
-func (f *blackManInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
-	return NewFilteredBlackManInformer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
+func (f *blackmanInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
+	return NewFilteredBlackmanInformer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
 }
 
-func (f *blackManInformer) Informer() cache.SharedIndexInformer {
-	return f.factory.InformerFor(&armancomv1alpha1.BlackMan{}, f.defaultInformer)
+func (f *blackmanInformer) Informer() cache.SharedIndexInformer {
+	return f.factory.InformerFor(&armancomv1alpha1.Blackman{}, f.defaultInformer)
 }
 
-func (f *blackManInformer) Lister() v1alpha1.BlackManLister {
-	return v1alpha1.NewBlackManLister(f.Informer().GetIndexer())
+func (f *blackmanInformer) Lister() v1alpha1.BlackmanLister {
+	return v1alpha1.NewBlackmanLister(f.Informer().GetIndexer())
 }

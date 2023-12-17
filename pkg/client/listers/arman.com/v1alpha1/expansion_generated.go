@@ -18,10 +18,10 @@ limitations under the License.
 
 package v1alpha1
 
-// BlackManListerExpansion allows custom methods to be added to
-// BlackManLister.
-type BlackManListerExpansion interface{}
+// BlackmanListerExpansion allows custom methods to be added to
+// BlackmanLister.
+type BlackmanListerExpansion interface{}
 
-// BlackManNamespaceListerExpansion allows custom methods to be added to
-// BlackManNamespaceLister.
-type BlackManNamespaceListerExpansion interface{}
+// BlackmanNamespaceListerExpansion allows custom methods to be added to
+// BlackmanNamespaceLister.
+type BlackmanNamespaceListerExpansion interface{}

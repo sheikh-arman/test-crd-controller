@@ -28,7 +28,7 @@ import (
 
 type ArmanV1alpha1Interface interface {
 	RESTClient() rest.Interface
-	BlackMansGetter
+	BlackmansGetter
 }
 
 // ArmanV1alpha1Client is used to interact with features provided by the arman.com group.
@@ -36,8 +36,8 @@ type ArmanV1alpha1Client struct {
 	restClient rest.Interface
 }
 
-func (c *ArmanV1alpha1Client) BlackMans(namespace string) BlackManInterface {
-	return newBlackMans(c, namespace)
+func (c *ArmanV1alpha1Client) Blackmans(namespace string) BlackmanInterface {
+	return newBlackmans(c, namespace)
 }
 
 // NewForConfig creates a new ArmanV1alpha1Client for the given config.

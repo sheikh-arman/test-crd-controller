@@ -32,31 +32,31 @@ import (
 	testing "k8s.io/client-go/testing"
 )
 
-// FakeBlackMans implements BlackManInterface
-type FakeBlackMans struct {
+// FakeBlackmans implements BlackmanInterface
+type FakeBlackmans struct {
 	Fake *FakeArmanV1alpha1
 	ns   string
 }
 
 var blackmansResource = v1alpha1.SchemeGroupVersion.WithResource("blackmans")
 
-var blackmansKind = v1alpha1.SchemeGroupVersion.WithKind("BlackMan")
+var blackmansKind = v1alpha1.SchemeGroupVersion.WithKind("Blackman")
 
-// Get takes name of the blackMan, and returns the corresponding blackMan object, and an error if there is any.
-func (c *FakeBlackMans) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BlackMan, err error) {
+// Get takes name of the blackman, and returns the corresponding blackman object, and an error if there is any.
+func (c *FakeBlackmans) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.Blackman, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewGetAction(blackmansResource, c.ns, name), &v1alpha1.BlackMan{})
+		Invokes(testing.NewGetAction(blackmansResource, c.ns, name), &v1alpha1.Blackman{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*v1alpha1.BlackMan), err
+	return obj.(*v1alpha1.Blackman), err
 }
 
-// List takes label and field selectors, and returns the list of BlackMans that match those selectors.
-func (c *FakeBlackMans) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BlackManList, err error) {
+// List takes label and field selectors, and returns the list of Blackmans that match those selectors.
+func (c *FakeBlackmans) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.BlackmanList, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewListAction(blackmansResource, blackmansKind, c.ns, opts), &v1alpha1.BlackManList{})
+		Invokes(testing.NewListAction(blackmansResource, blackmansKind, c.ns, opts), &v1alpha1.BlackmanList{})
 
 	if obj == nil {
 		return nil, err
@@ -66,8 +66,8 @@ func (c *FakeBlackMans) List(ctx context.Context, opts v1.ListOptions) (result *
 	if label == nil {
 		label = labels.Everything()
 	}
-	list := &v1alpha1.BlackManList{ListMeta: obj.(*v1alpha1.BlackManList).ListMeta}
-	for _, item := range obj.(*v1alpha1.BlackManList).Items {
+	list := &v1alpha1.BlackmanList{ListMeta: obj.(*v1alpha1.BlackmanList).ListMeta}
+	for _, item := range obj.(*v1alpha1.BlackmanList).Items {
 		if label.Matches(labels.Set(item.Labels)) {
 			list.Items = append(list.Items, item)
 		}
@@ -75,115 +75,80 @@ func (c *FakeBlackMans) List(ctx context.Context, opts v1.ListOptions) (result *
 	return list, err
 }
 
-// Watch returns a watch.Interface that watches the requested blackMans.
-func (c *FakeBlackMans) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
+// Watch returns a watch.Interface that watches the requested blackmans.
+func (c *FakeBlackmans) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(blackmansResource, c.ns, opts))
 
 }
 
-// Create takes the representation of a blackMan and creates it.  Returns the server's representation of the blackMan, and an error, if there is any.
-func (c *FakeBlackMans) Create(ctx context.Context, blackMan *v1alpha1.BlackMan, opts v1.CreateOptions) (result *v1alpha1.BlackMan, err error) {
+// Create takes the representation of a blackman and creates it.  Returns the server's representation of the blackman, and an error, if there is any.
+func (c *FakeBlackmans) Create(ctx context.Context, blackman *v1alpha1.Blackman, opts v1.CreateOptions) (result *v1alpha1.Blackman, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewCreateAction(blackmansResource, c.ns, blackMan), &v1alpha1.BlackMan{})
+		Invokes(testing.NewCreateAction(blackmansResource, c.ns, blackman), &v1alpha1.Blackman{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*v1alpha1.BlackMan), err
+	return obj.(*v1alpha1.Blackman), err
 }
 
-// Update takes the representation of a blackMan and updates it. Returns the server's representation of the blackMan, and an error, if there is any.
-func (c *FakeBlackMans) Update(ctx context.Context, blackMan *v1alpha1.BlackMan, opts v1.UpdateOptions) (result *v1alpha1.BlackMan, err error) {
+// Update takes the representation of a blackman and updates it. Returns the server's representation of the blackman, and an error, if there is any.
+func (c *FakeBlackmans) Update(ctx context.Context, blackman *v1alpha1.Blackman, opts v1.UpdateOptions) (result *v1alpha1.Blackman, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewUpdateAction(blackmansResource, c.ns, blackMan), &v1alpha1.BlackMan{})
+		Invokes(testing.NewUpdateAction(blackmansResource, c.ns, blackman), &v1alpha1.Blackman{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*v1alpha1.BlackMan), err
+	return obj.(*v1alpha1.Blackman), err
 }
 
-// UpdateStatus was generated because the type contains a Status member.
-// Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeBlackMans) UpdateStatus(ctx context.Context, blackMan *v1alpha1.BlackMan, opts v1.UpdateOptions) (*v1alpha1.BlackMan, error) {
-	obj, err := c.Fake.
-		Invokes(testing.NewUpdateSubresourceAction(blackmansResource, "status", c.ns, blackMan), &v1alpha1.BlackMan{})
-
-	if obj == nil {
-		return nil, err
-	}
-	return obj.(*v1alpha1.BlackMan), err
-}
-
-// Delete takes name of the blackMan and deletes it. Returns an error if one occurs.
-func (c *FakeBlackMans) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
+// Delete takes name of the blackman and deletes it. Returns an error if one occurs.
+func (c *FakeBlackmans) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
-		Invokes(testing.NewDeleteActionWithOptions(blackmansResource, c.ns, name, opts), &v1alpha1.BlackMan{})
+		Invokes(testing.NewDeleteActionWithOptions(blackmansResource, c.ns, name, opts), &v1alpha1.Blackman{})
 
 	return err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeBlackMans) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+func (c *FakeBlackmans) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	action := testing.NewDeleteCollectionAction(blackmansResource, c.ns, listOpts)
 
-	_, err := c.Fake.Invokes(action, &v1alpha1.BlackManList{})
+	_, err := c.Fake.Invokes(action, &v1alpha1.BlackmanList{})
 	return err
 }
 
-// Patch applies the patch and returns the patched blackMan.
-func (c *FakeBlackMans) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.BlackMan, err error) {
+// Patch applies the patch and returns the patched blackman.
+func (c *FakeBlackmans) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.Blackman, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewPatchSubresourceAction(blackmansResource, c.ns, name, pt, data, subresources...), &v1alpha1.BlackMan{})
+		Invokes(testing.NewPatchSubresourceAction(blackmansResource, c.ns, name, pt, data, subresources...), &v1alpha1.Blackman{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*v1alpha1.BlackMan), err
+	return obj.(*v1alpha1.Blackman), err
 }
 
-// Apply takes the given apply declarative configuration, applies it and returns the applied blackMan.
-func (c *FakeBlackMans) Apply(ctx context.Context, blackMan *armancomv1alpha1.BlackManApplyConfiguration, opts v1.ApplyOptions) (result *v1alpha1.BlackMan, err error) {
-	if blackMan == nil {
-		return nil, fmt.Errorf("blackMan provided to Apply must not be nil")
+// Apply takes the given apply declarative configuration, applies it and returns the applied blackman.
+func (c *FakeBlackmans) Apply(ctx context.Context, blackman *armancomv1alpha1.BlackmanApplyConfiguration, opts v1.ApplyOptions) (result *v1alpha1.Blackman, err error) {
+	if blackman == nil {
+		return nil, fmt.Errorf("blackman provided to Apply must not be nil")
 	}
-	data, err := json.Marshal(blackMan)
+	data, err := json.Marshal(blackman)
 	if err != nil {
 		return nil, err
 	}
-	name := blackMan.Name
+	name := blackman.Name
 	if name == nil {
-		return nil, fmt.Errorf("blackMan.Name must be provided to Apply")
+		return nil, fmt.Errorf("blackman.Name must be provided to Apply")
 	}
 	obj, err := c.Fake.
-		Invokes(testing.NewPatchSubresourceAction(blackmansResource, c.ns, *name, types.ApplyPatchType, data), &v1alpha1.BlackMan{})
+		Invokes(testing.NewPatchSubresourceAction(blackmansResource, c.ns, *name, types.ApplyPatchType, data), &v1alpha1.Blackman{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*v1alpha1.BlackMan), err
-}
-
-// ApplyStatus was generated because the type contains a Status member.
-// Add a +genclient:noStatus comment above the type to avoid generating ApplyStatus().
-func (c *FakeBlackMans) ApplyStatus(ctx context.Context, blackMan *armancomv1alpha1.BlackManApplyConfiguration, opts v1.ApplyOptions) (result *v1alpha1.BlackMan, err error) {
-	if blackMan == nil {
-		return nil, fmt.Errorf("blackMan provided to Apply must not be nil")
-	}
-	data, err := json.Marshal(blackMan)
-	if err != nil {
-		return nil, err
-	}
-	name := blackMan.Name
-	if name == nil {
-		return nil, fmt.Errorf("blackMan.Name must be provided to Apply")
-	}
-	obj, err := c.Fake.
-		Invokes(testing.NewPatchSubresourceAction(blackmansResource, c.ns, *name, types.ApplyPatchType, data, "status"), &v1alpha1.BlackMan{})
-
-	if obj == nil {
-		return nil, err
-	}
-	return obj.(*v1alpha1.BlackMan), err
+	return obj.(*v1alpha1.Blackman), err
 }

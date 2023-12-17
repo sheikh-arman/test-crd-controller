@@ -18,4 +18,4 @@ limitations under the License.
 
 package v1alpha1
 
-type BlackManExpansion interface{}
+type BlackmanExpansion interface{}

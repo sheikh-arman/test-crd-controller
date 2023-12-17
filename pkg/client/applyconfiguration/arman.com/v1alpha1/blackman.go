@@ -24,22 +24,21 @@ import (
 	v1 "k8s.io/client-go/applyconfigurations/meta/v1"
 )
 
-// BlackManApplyConfiguration represents an declarative configuration of the BlackMan type for use
+// BlackmanApplyConfiguration represents an declarative configuration of the Blackman type for use
 // with apply.
-type BlackManApplyConfiguration struct {
+type BlackmanApplyConfiguration struct {
 	v1.TypeMetaApplyConfiguration    `json:",inline"`
 	*v1.ObjectMetaApplyConfiguration `json:"metadata,omitempty"`
-	Spec                             *BlackManSpecApplyConfiguration `json:"spec,omitempty"`
-	Status                           *ArmanStatusApplyConfiguration  `json:"status,omitempty"`
+	Spec                             *BlackmanSpecApplyConfiguration `json:"spec,omitempty"`
 }
 
-// BlackMan constructs an declarative configuration of the BlackMan type for use with
+// Blackman constructs an declarative configuration of the Blackman type for use with
 // apply.
-func BlackMan(name, namespace string) *BlackManApplyConfiguration {
-	b := &BlackManApplyConfiguration{}
+func Blackman(name, namespace string) *BlackmanApplyConfiguration {
+	b := &BlackmanApplyConfiguration{}
 	b.WithName(name)
 	b.WithNamespace(namespace)
-	b.WithKind("BlackMan")
+	b.WithKind("Blackman")
 	b.WithAPIVersion("arman.com/v1alpha1")
 	return b
 }
@@ -47,7 +46,7 @@ func BlackMan(name, namespace string) *BlackManApplyConfiguration {
 // WithKind sets the Kind field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Kind field is set to the value of the last call.
-func (b *BlackManApplyConfiguration) WithKind(value string) *BlackManApplyConfiguration {
+func (b *BlackmanApplyConfiguration) WithKind(value string) *BlackmanApplyConfiguration {
 	b.Kind = &value
 	return b
 }
@@ -55,7 +54,7 @@ func (b *BlackManApplyConfiguration) WithKind(value string) *BlackManApplyConfig
 // WithAPIVersion sets the APIVersion field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the APIVersion field is set to the value of the last call.
-func (b *BlackManApplyConfiguration) WithAPIVersion(value string) *BlackManApplyConfiguration {
+func (b *BlackmanApplyConfiguration) WithAPIVersion(value string) *BlackmanApplyConfiguration {
 	b.APIVersion = &value
 	return b
 }
@@ -63,7 +62,7 @@ func (b *BlackManApplyConfiguration) WithAPIVersion(value string) *BlackManApply
 // WithName sets the Name field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Name field is set to the value of the last call.
-func (b *BlackManApplyConfiguration) WithName(value string) *BlackManApplyConfiguration {
+func (b *BlackmanApplyConfiguration) WithName(value string) *BlackmanApplyConfiguration {
 	b.ensureObjectMetaApplyConfigurationExists()
 	b.Name = &value
 	return b
@@ -72,7 +71,7 @@ func (b *BlackManApplyConfiguration) WithName(value string) *BlackManApplyConfig
 // WithGenerateName sets the GenerateName field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the GenerateName field is set to the value of the last call.
-func (b *BlackManApplyConfiguration) WithGenerateName(value string) *BlackManApplyConfiguration {
+func (b *BlackmanApplyConfiguration) WithGenerateName(value string) *BlackmanApplyConfiguration {
 	b.ensureObjectMetaApplyConfigurationExists()
 	b.GenerateName = &value
 	return b
@@ -81,7 +80,7 @@ func (b *BlackManApplyConfiguration) WithGenerateName(value string) *BlackManApp
 // WithNamespace sets the Namespace field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Namespace field is set to the value of the last call.
-func (b *BlackManApplyConfiguration) WithNamespace(value string) *BlackManApplyConfiguration {
+func (b *BlackmanApplyConfiguration) WithNamespace(value string) *BlackmanApplyConfiguration {
 	b.ensureObjectMetaApplyConfigurationExists()
 	b.Namespace = &value
 	return b
@@ -90,7 +89,7 @@ func (b *BlackManApplyConfiguration) WithNamespace(value string) *BlackManApplyC
 // WithUID sets the UID field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the UID field is set to the value of the last call.
-func (b *BlackManApplyConfiguration) WithUID(value types.UID) *BlackManApplyConfiguration {
+func (b *BlackmanApplyConfiguration) WithUID(value types.UID) *BlackmanApplyConfiguration {
 	b.ensureObjectMetaApplyConfigurationExists()
 	b.UID = &value
 	return b
@@ -99,7 +98,7 @@ func (b *BlackManApplyConfiguration) WithUID(value types.UID) *BlackManApplyConf
 // WithResourceVersion sets the ResourceVersion field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the ResourceVersion field is set to the value of the last call.
-func (b *BlackManApplyConfiguration) WithResourceVersion(value string) *BlackManApplyConfiguration {
+func (b *BlackmanApplyConfiguration) WithResourceVersion(value string) *BlackmanApplyConfiguration {
 	b.ensureObjectMetaApplyConfigurationExists()
 	b.ResourceVersion = &value
 	return b
@@ -108,7 +107,7 @@ func (b *BlackManApplyConfiguration) WithResourceVersion(value string) *BlackMan
 // WithGeneration sets the Generation field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Generation field is set to the value of the last call.
-func (b *BlackManApplyConfiguration) WithGeneration(value int64) *BlackManApplyConfiguration {
+func (b *BlackmanApplyConfiguration) WithGeneration(value int64) *BlackmanApplyConfiguration {
 	b.ensureObjectMetaApplyConfigurationExists()
 	b.Generation = &value
 	return b
@@ -117,7 +116,7 @@ func (b *BlackManApplyConfiguration) WithGeneration(value int64) *BlackManApplyC
 // WithCreationTimestamp sets the CreationTimestamp field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the CreationTimestamp field is set to the value of the last call.
-func (b *BlackManApplyConfiguration) WithCreationTimestamp(value metav1.Time) *BlackManApplyConfiguration {
+func (b *BlackmanApplyConfiguration) WithCreationTimestamp(value metav1.Time) *BlackmanApplyConfiguration {
 	b.ensureObjectMetaApplyConfigurationExists()
 	b.CreationTimestamp = &value
 	return b
@@ -126,7 +125,7 @@ func (b *BlackManApplyConfiguration) WithCreationTimestamp(value metav1.Time) *B
 // WithDeletionTimestamp sets the DeletionTimestamp field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the DeletionTimestamp field is set to the value of the last call.
-func (b *BlackManApplyConfiguration) WithDeletionTimestamp(value metav1.Time) *BlackManApplyConfiguration {
+func (b *BlackmanApplyConfiguration) WithDeletionTimestamp(value metav1.Time) *BlackmanApplyConfiguration {
 	b.ensureObjectMetaApplyConfigurationExists()
 	b.DeletionTimestamp = &value
 	return b
@@ -135,7 +134,7 @@ func (b *BlackManApplyConfiguration) WithDeletionTimestamp(value metav1.Time) *B
 // WithDeletionGracePeriodSeconds sets the DeletionGracePeriodSeconds field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the DeletionGracePeriodSeconds field is set to the value of the last call.
-func (b *BlackManApplyConfiguration) WithDeletionGracePeriodSeconds(value int64) *BlackManApplyConfiguration {
+func (b *BlackmanApplyConfiguration) WithDeletionGracePeriodSeconds(value int64) *BlackmanApplyConfiguration {
 	b.ensureObjectMetaApplyConfigurationExists()
 	b.DeletionGracePeriodSeconds = &value
 	return b
@@ -145,7 +144,7 @@ func (b *BlackManApplyConfiguration) WithDeletionGracePeriodSeconds(value int64)
 // and returns the receiver, so that objects can be build by chaining "With" function invocations.
 // If called multiple times, the entries provided by each call will be put on the Labels field,
 // overwriting an existing map entries in Labels field with the same key.
-func (b *BlackManApplyConfiguration) WithLabels(entries map[string]string) *BlackManApplyConfiguration {
+func (b *BlackmanApplyConfiguration) WithLabels(entries map[string]string) *BlackmanApplyConfiguration {
 	b.ensureObjectMetaApplyConfigurationExists()
 	if b.Labels == nil && len(entries) > 0 {
 		b.Labels = make(map[string]string, len(entries))
@@ -160,7 +159,7 @@ func (b *BlackManApplyConfiguration) WithLabels(entries map[string]string) *Blac
 // and returns the receiver, so that objects can be build by chaining "With" function invocations.
 // If called multiple times, the entries provided by each call will be put on the Annotations field,
 // overwriting an existing map entries in Annotations field with the same key.
-func (b *BlackManApplyConfiguration) WithAnnotations(entries map[string]string) *BlackManApplyConfiguration {
+func (b *BlackmanApplyConfiguration) WithAnnotations(entries map[string]string) *BlackmanApplyConfiguration {
 	b.ensureObjectMetaApplyConfigurationExists()
 	if b.Annotations == nil && len(entries) > 0 {
 		b.Annotations = make(map[string]string, len(entries))
@@ -174,7 +173,7 @@ func (b *BlackManApplyConfiguration) WithAnnotations(entries map[string]string) 
 // WithOwnerReferences adds the given value to the OwnerReferences field in the declarative configuration
 // and returns the receiver, so that objects can be build by chaining "With" function invocations.
 // If called multiple times, values provided by each call will be appended to the OwnerReferences field.
-func (b *BlackManApplyConfiguration) WithOwnerReferences(values ...*v1.OwnerReferenceApplyConfiguration) *BlackManApplyConfiguration {
+func (b *BlackmanApplyConfiguration) WithOwnerReferences(values ...*v1.OwnerReferenceApplyConfiguration) *BlackmanApplyConfiguration {
 	b.ensureObjectMetaApplyConfigurationExists()
 	for i := range values {
 		if values[i] == nil {
@@ -188,7 +187,7 @@ func (b *BlackManApplyConfiguration) WithOwnerReferences(values ...*v1.OwnerRefe
 // WithFinalizers adds the given value to the Finalizers field in the declarative configuration
 // and returns the receiver, so that objects can be build by chaining "With" function invocations.
 // If called multiple times, values provided by each call will be appended to the Finalizers field.
-func (b *BlackManApplyConfiguration) WithFinalizers(values ...string) *BlackManApplyConfiguration {
+func (b *BlackmanApplyConfiguration) WithFinalizers(values ...string) *BlackmanApplyConfiguration {
 	b.ensureObjectMetaApplyConfigurationExists()
 	for i := range values {
 		b.Finalizers = append(b.Finalizers, values[i])
@@ -196,7 +195,7 @@ func (b *BlackManApplyConfiguration) WithFinalizers(values ...string) *BlackManA
 	return b
 }
 
-func (b *BlackManApplyConfiguration) ensureObjectMetaApplyConfigurationExists() {
+func (b *BlackmanApplyConfiguration) ensureObjectMetaApplyConfigurationExists() {
 	if b.ObjectMetaApplyConfiguration == nil {
 		b.ObjectMetaApplyConfiguration = &v1.ObjectMetaApplyConfiguration{}
 	}
@@ -205,15 +204,7 @@ func (b *BlackManApplyConfiguration) ensureObjectMetaApplyConfigurationExists() 
 // WithSpec sets the Spec field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Spec field is set to the value of the last call.
-func (b *BlackManApplyConfiguration) WithSpec(value *BlackManSpecApplyConfiguration) *BlackManApplyConfiguration {
+func (b *BlackmanApplyConfiguration) WithSpec(value *BlackmanSpecApplyConfiguration) *BlackmanApplyConfiguration {
 	b.Spec = value
-	return b
-}
-
-// WithStatus sets the Status field in the declarative configuration to the given value
-// and returns the receiver, so that objects can be built by chaining "With" function invocations.
-// If called multiple times, the Status field is set to the value of the last call.
-func (b *BlackManApplyConfiguration) WithStatus(value *ArmanStatusApplyConfiguration) *BlackManApplyConfiguration {
-	b.Status = value
 	return b
 }
